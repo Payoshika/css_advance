@@ -8,6 +8,16 @@
 
 html {
     font-size: 62.5%;
+
+    @include respond(big-desktop){
+        font-size: 75%;
+    }
+    @include respond(tab-land){
+        font-size: 62.5%;
+    }
+    @include respond(tab-port){
+        font-size: 50%;
+    }
 }
 
 body {
@@ -18,4 +28,12 @@ body {
     color: $color-grey-dark;
     padding: 3rem;
     box-sizing: border-box;
+
+    //media query
+    @include respond(tab-port){
+        padding: 2rem;
+    }
+    @include respond(phone){
+        padding: 0rem;
+    }
 }

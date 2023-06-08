@@ -7,6 +7,15 @@
 
 html {
   font-size: 62.5%; }
+  @media (min-width: 1800px) {
+    html {
+      font-size: 75%; } }
+  @media (max-width: 1200px) {
+    html {
+      font-size: 62.5%; } }
+  @media (max-width: 900px) {
+    html {
+      font-size: 50%; } }
 
 body {
   font-family: "Lato", sans-serif;
@@ -16,6 +25,12 @@ body {
   color: #777;
   padding: 3rem;
   box-sizing: border-box; }
+  @media (max-width: 900px) {
+    body {
+      padding: 2rem; } }
+  @media (max-width: 600px) {
+    body {
+      padding: 0rem; } }
 
 /* appear from the left */
 @keyframes moveInLeft {
@@ -38,6 +53,38 @@ body {
     opacity: 1;
     transform: translateX(0); } }
 
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+  backface-visibility: hidden;
+  margin-bottom: 6rem; }
+  .heading-primary--main {
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem; }
+    @media (max-width: 900px) {
+      .heading-primary--main {
+        font-size: 4rem;
+        letter-spacing: 2.5rem; } }
+    @media (max-width: 600px) {
+      .heading-primary--main {
+        font-size: 3rem;
+        letter-spacing: 1.5rem; } }
+  .heading-primary--sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.75rem;
+    animation: moveInRight 1s ease-out; }
+    @media (max-width: 900px) {
+      .heading-primary--sub {
+        font-size: 1.5rem;
+        letter-spacing: 1rem; } }
+    @media (max-width: 600px) {
+      .heading-primary--sub {
+        font-size: 1.25rem;
+        letter-spacing: .75rem; } }
+
 .heading-secondary {
   font-size: 3.5rem;
   text-transform: uppercase;
@@ -48,6 +95,12 @@ body {
   color: transparent;
   letter-spacing: .2rem;
   transition: all .2s; }
+  @media (max-width: 900px) {
+    .heading-secondary {
+      font-size: 3rem; } }
+  @media (max-width: 600px) {
+    .heading-secondary {
+      font-size: 2.5rem; } }
   .heading-secondary:hover {
     transform: skewY(2deg) skewX(15deg) scale(1.1);
     text-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.8); }
@@ -246,7 +299,7 @@ body {
   top: 6.5rem;
   right: 6.5rem;
   background-image: radial-gradient(#7ed56f, #28b485);
-  z-index: 1000;
+  z-index: 0;
   transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1); }
 
 .navigation__button {
@@ -257,7 +310,7 @@ body {
   position: fixed;
   top: 6rem;
   right: 6rem;
-  z-index: 2000;
+  z-index: 0;
   box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1);
   text-align: center;
   cursor: pointer; }
@@ -267,7 +320,7 @@ body {
   position: fixed;
   top: 0;
   right: 0;
-  z-index: 1500;
+  z-index: -1;
   opacity: 0;
   width: 0;
   transition: opacity 0.8s, width 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55); }
@@ -674,3 +727,68 @@ body {
 
 .form__radio-input:checked ~ .form__radio-label .form__radio-button::after {
   opacity: 1; }
+
+.popup {
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background-color: rgba(0, 0, 0, 0.8);
+  opacity: 0;
+  visibility: 0;
+  transition: all .3s .2s; }
+  .popup:target {
+    opacity: 1;
+    visibility: visible;
+    z-index: 10; }
+  .popup:target .popup__content {
+    transform: translate(-50%, -50%) scale(1); }
+  .popup__content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.5);
+    text-align: center;
+    width: 75%;
+    background-color: #fff;
+    box-shadow: 0 3rem 6rem rgba(0, 0, 0, 0.3);
+    border-radius: 3px;
+    display: table; }
+    .popup__content::after {
+      content: "";
+      display: table;
+      clear: both; }
+  .popup__left {
+    width: 33.333333%;
+    display: table-cell;
+    vertical-align: middle; }
+  .popup__right {
+    display: table-cell;
+    width: 66.666666%;
+    height: 100%;
+    padding: 3rem 5rem;
+    vertical-align: middle; }
+  .popup__img {
+    display: block;
+    width: 100%; }
+  .popup__text {
+    font-size: 1.4rem;
+    color: #333;
+    column-count: 2;
+    column-gap: 3rem;
+    column-rule: 1px solid #eee;
+    hyphens: auto; }
+  .popup__close:link, .popup__close:visited {
+    color: #999;
+    position: absolute;
+    top: 2.5rem;
+    right: 2.5rem;
+    font-size: 3rem;
+    text-decoration: none;
+    display: inline-block;
+    transition: all .2s;
+    line-height: 1; }
+  .popup__close:hover {
+    color: #55c57a; }
